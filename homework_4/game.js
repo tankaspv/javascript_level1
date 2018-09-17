@@ -1,4 +1,6 @@
 ﻿console.log('game.js');
+var answerLog = [];
+
 var config = [{
 		id: 1,
 		question: "Как правильно закончить пословицу: «Не откладывай на завтра то, что можно…»?",
@@ -40,6 +42,9 @@ var game = {
 		this.isRunning = false;
 		var message = status ? 'Победа!' : 'Поражение';
 		alert(message);
+		var n = prompt("Введите номер хода: ");
+		console.log(answerLog);
+		alert(answerLog[n]);
 	},
 	getQuestion: function(){
 		if ( this.questions[this.question] ) {
@@ -59,7 +64,9 @@ var game = {
 	},
 	parseAnswer: function(answer){
 		var possible = ['A', 'B', 'C', 'D'];
+		answerLog.push(answer);
 		return possible.indexOf(answer) !== -1;
+
 	},
 	checkAnswer: function(question, answer){
 		return question.answer == answer;
